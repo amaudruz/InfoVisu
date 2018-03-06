@@ -14,14 +14,11 @@ void setup() {
 }
 
 void draw() {
-  camera(width/2, height/2, depth, 250, 250, 0, 0, 1, 0);
+  camera(0, 0, depth, 0, 0, 0, 0, 1, 0);
   directionalLight(50, 100, 125, 0, -1, 0);
   ambientLight(102, 102, 102);
   background(200);
   
-  translate(width/2, height/2, 0);
-  rotX = clamp(map(mouseY, 0, height, -maxAngle -1, maxAngle +1) * speed, -maxAngle, maxAngle);
-  rotZ = clamp(map(mouseX, 0, width, -maxAngle -1, maxAngle +1) * speed, -maxAngle, maxAngle);
   rotateX(rotX);
   rotateZ(rotZ);
   box(500, 500, 10);
@@ -37,7 +34,25 @@ float clamp(float num, float min, float max) {
   }
 }
 
+void mouseDragged() 
+{
+  int diffX = mouseY - pmouseY;
+  if (diffX > 0) {
+    rotX = clamp(rotX + 0.05*speed, -maxAngle, maxAngle);
+  } else if (diffX < 0) {
+    rotX = clamp(rotX - 0.05*speed, -maxAngle, maxAngle);
+  }
+  
+  int diffZ = mouseX - pmouseX;
+  if (diffZ > 0) {
+    rotZ = clamp(rotZ + 0.05*speed, -maxAngle, maxAngle);
+  } else if (diffZ < 0) {
+    rotZ = clamp(rotZ - 0.05*speed, -maxAngle, maxAngle);
+  }
+}
+
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  speed += e/10;
+  speed = clamp(speed + e/10, 0, 5);
+  if(speed == 0) {println("La vitesse de rotation égale 0 !");}
 }
