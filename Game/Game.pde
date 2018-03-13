@@ -6,12 +6,13 @@ float rotZ = 0;
 float speed = 1;
 float maxAngle = PI/3;
 float box_thickness = 10;
+float box_size = 800;
 float gravityConstant = 1;
 
 Ball ball;
 
 void settings() {
-  size(500, 500, P3D);
+  size(1000, 1000, P3D);
   ball = new Ball();
 }
 
@@ -27,7 +28,7 @@ void draw() {
   
   rotateX(rotX);
   rotateZ(rotZ);
-  box(500, 500, box_thickness);
+  box(box_size, box_size, box_thickness);
   
   ball.update();
   ball.checkEdges();
