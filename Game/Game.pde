@@ -10,7 +10,7 @@ void settings() {
   size(500, 500, P3D);
 }
 void setup() {
-  noStroke(); 333
+  noStroke();
 }
 
 void draw() {
@@ -36,17 +36,17 @@ float clamp(float num, float min, float max) {
 
 void mouseDragged() 
 {
-  int diffX = mouseY - pmouseY;
-  if (diffX > 0) {
+  int diffY = -(mouseY - pmouseY);
+  if (diffY > 0) {
     rotX = clamp(rotX + 0.05*speed, -maxAngle, maxAngle);
-  } else if (diffX < 0) {
+  } else if (diffY < 0) {
     rotX = clamp(rotX - 0.05*speed, -maxAngle, maxAngle);
   }
   
-  int diffZ = mouseX - pmouseX;
-  if (diffZ > 0) {
+  int diffX = mouseX - pmouseX;
+  if (diffX > 0) {
     rotZ = clamp(rotZ + 0.05*speed, -maxAngle, maxAngle);
-  } else if (diffZ < 0) {
+  } else if (diffX < 0) {
     rotZ = clamp(rotZ - 0.05*speed, -maxAngle, maxAngle);
   }
 }
