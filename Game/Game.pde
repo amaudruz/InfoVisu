@@ -10,7 +10,7 @@ void settings() {
   size(500, 500, P3D);
 }
 void setup() {
-  noStroke();
+  noStroke(); 333
 }
 
 void draw() {
