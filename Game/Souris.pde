@@ -1,3 +1,5 @@
+float speed = 0.8;
+
 void mouseDragged() 
 {
   int diffY = -(mouseY - pmouseY);
@@ -17,6 +19,6 @@ void mouseDragged()
 
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  speed = clamp(speed + e/10, 0, 5);
+  speed = clamp(speed - e/10, 0, 5);
   if(speed == 0) {println("La vitesse de rotation égale 0 !");}
 }

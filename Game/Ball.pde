@@ -7,11 +7,11 @@ class Ball {
   float coeff_rebond = 0.5;
 
   float normalForce = 1;
-  float mu = 0.9;
+  float mu = 0.8;
   float frictionMagnitude = normalForce * mu;
 
   Ball() {
-    location = new PVector(0, 0, 0);
+    location = new PVector(0, 50, 0);
     velocity = new PVector(0, 0, 0);
     gravity = new PVector(0, 0, 0);
   }
@@ -19,8 +19,8 @@ class Ball {
   void update() {
     PVector gravity = new PVector(0, 0, 0);
 
-    gravity.x = sin(rotZ) * gravityConstant;
-    gravity.z = sin(-rotX) * gravityConstant;
+    gravity.x = sin(-rotZ) * gravityConstant;
+    gravity.z = sin(rotX) * gravityConstant;
 
     location.add(velocity);
     velocity.add(gravity);
@@ -31,7 +31,7 @@ class Ball {
     friction.mult(frictionMagnitude);
     velocity.add(friction);
 
-    translate(location.x, location.z, location.y);
+    translate(location.x, location.y, location.z);
   }
 
   void display() {
@@ -44,7 +44,7 @@ class Ball {
 
   void checkEdges() {
     if (location.x > box_size/2) {
-      velocity.x = coeff_rebond* abs(velocity.x) * -1;
+      velocity.x = coeff_rebond * abs(velocity.x) * -1;
     } else if (location.x < -box_size/2) {
       velocity.x = coeff_rebond * abs(velocity.x);
     }
@@ -52,7 +52,7 @@ class Ball {
     if (location.z > box_size/2) {
       velocity.z = coeff_rebond * abs(velocity.z) * -1;
     } else if (location.z < -box_size/2) {
-      velocity.z = coeff_rebond * abs(velocity.y);
+      velocity.z = coeff_rebond * abs(velocity.z);
     }
   }
 }
