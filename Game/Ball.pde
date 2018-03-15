@@ -7,7 +7,7 @@ class Ball {
   float coeff_rebond = 0.5;
 
   float normalForce = 1;
-  float mu = 0.8;
+  float mu = 0.01;
   float frictionMagnitude = normalForce * mu;
 
   Ball() {
@@ -43,15 +43,15 @@ class Ball {
   }
 
   void checkEdges() {
-    if (location.x > box_size/2) {
+    if (location.x > box_size/2 - radius) {
       velocity.x = coeff_rebond * abs(velocity.x) * -1;
-    } else if (location.x < -box_size/2) {
+    } else if (location.x < -box_size/2 + radius) {
       velocity.x = coeff_rebond * abs(velocity.x);
     }
 
-    if (location.z > box_size/2) {
+    if (location.z > box_size/2 - radius) {
       velocity.z = coeff_rebond * abs(velocity.z) * -1;
-    } else if (location.z < -box_size/2) {
+    } else if (location.z < -box_size/2 + radius) {
       velocity.z = coeff_rebond * abs(velocity.z);
     }
   }
