@@ -22,3 +22,9 @@ void mouseWheel(MouseEvent event) {
   speed = clamp(speed - e/10, 0, 5);
   if(speed == 0) {println("La vitesse de rotation égale 0 !");}
 }
+
+void mouseClicked() {
+  if(placingCylinder){
+    positionCylindres.add(new PVector(mouseX, mouseY));
+  }
+}
