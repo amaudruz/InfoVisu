@@ -25,6 +25,6 @@ void mouseWheel(MouseEvent event) {
 
 void mouseClicked() {
   if(placingCylinder){
-    positionCylindres.add(new PVector(mouseX, mouseY));
+    positionCylindres.add(new PVector(width/2 - mouseX, -height/2 + mouseY));
   }
 }

@@ -16,7 +16,7 @@ void draw_game() {
 
   for (int i = 0; i < positionCylindres.size(); i++) {
     pushMatrix();
-    translate(positionCylindres.get(i).x, positionCylindres.get(i).y, 0);
+    translate(positionCylindres.get(i).x, 0, positionCylindres.get(i).y);
     // jojo
     cylindre.display();
     popMatrix();
@@ -24,7 +24,7 @@ void draw_game() {
 }
 
 void draw_placingCylinders() {
-  camera(0, depth, 0, 0, 0, 0, 0, 0, 1);
+  camera(0, -depth, 0, 0, 0, 0, 0, 0, -1);
   background(200);
   directionalLight(50, 100, 125, 0, 1, 0);
   ambientLight(102, 102, 102);
