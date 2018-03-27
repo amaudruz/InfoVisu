@@ -55,4 +55,15 @@ class Ball {
       velocity.z = coeff_rebond * abs(velocity.z);
     }
   }
+
+  void checkCylindres() {
+    for (int i = 0; i < positionCylindres.size(); i++) {
+      float distX = abs(positionCylindres.get(i).x - (location.x + velocity.x));
+      float distZ = abs(positionCylindres.get(i).z - (location.z + velocity.z));
+      float dist = sqrt(distX * distX + distZ * distZ);
+      if (dist <= radius + cylinderBaseSize) {
+        ???
+      }
+    }
+  }
 }

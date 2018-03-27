@@ -1,3 +1,4 @@
+int window_size = 1000;
 float depth = 2000;
 float scale = 1;
 
@@ -16,6 +17,8 @@ int cylinderResolution = 40;
 PShape topCylinder = new PShape();
 PShape bottomCylinder = new PShape();
 PShape openCylinder = new PShape();
+
+float f = depth/window_size;
 
 Ball ball;
 Cylindre cylindre;

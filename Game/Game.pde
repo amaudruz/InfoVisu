@@ -1,5 +1,5 @@
 void settings() {
-  size(1000, 1000, P3D);
+  size(window_size, window_size, P3D);
   ball = new Ball();
   cylindre = new Cylindre();
 }
