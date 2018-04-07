@@ -59,10 +59,40 @@ class Ball {
   void checkCylindres() {
     for (int i = 0; i < positionCylindres.size(); i++) {
       float distX = abs(positionCylindres.get(i).x - (location.x + velocity.x));
-      float distZ = abs(positionCylindres.get(i).z - (location.z + velocity.z));
+      float distZ = abs(positionCylindres.get(i).y - (location.z + velocity.z));
       float dist = sqrt(distX * distX + distZ * distZ);
       if (dist <= radius + cylinderBaseSize) {
-        ???
+       // println("Avant : " + location.x + "; " +location.y + "; " + location.z);
+        //println("Avant cylindre :" + positionCylindres.get(i).x + "; " +positionCylindres.get(i).y + "; " + positionCylindres.get(i).z);
+        //println("Avant  Vitesse : " + velocity.x + "; " +velocity.y + "; " + velocity.z);
+
+         // calcul du vercteur n 
+        float nX = -positionCylindres.get(i).x + (location.x + velocity.x);
+        float nZ = -positionCylindres.get(i).y + (location.z + velocity.z);
+        float sizeofN = sqrt(nX*nX + nZ*nZ);
+        //println("sizeof : " + sizeofN);
+        
+        // normalisation du vecteur n
+        nX = (nX/sizeofN) ; 
+        nZ = (nZ/sizeofN) ;
+        //sizeofN = sqrt(nX*nX + nZ*nZ);
+         //println(sizeofN);
+
+        float scalar = 2*((velocity.x * nX) + (velocity.z * nZ)); // le produit scalaire dans la formule 
+        //float vit = (velocity.x *  velocity.x) + ( velocity.z *  velocity.z);
+       // println(" vit : " + vit);
+       // on utilise la formule pour change la vitesse 
+        velocity.x = velocity.x - 2*scalar*(nX);
+        velocity.z = velocity.z - 2*scalar*(nZ);
+        
+        // on remet la balle au bord du cylindre
+        location.x = positionCylindres.get(i).x + cylinderBaseSize*nX + radius;  
+        location.z = positionCylindres.get(i).y + cylinderBaseSize*nZ + radius;
+        //vit = (velocity.x *  velocity.x) + ( velocity.z *  velocity.z);
+         //println("Apres : " + location.x + "; " +location.y + "; " + location.z);
+         //println(" vit 2 : " + vit);
+
+        //println("Apres  Vitesse : " + velocity.x + "; " +velocity.y + "; " + velocity.z);
       }
     }
   }
