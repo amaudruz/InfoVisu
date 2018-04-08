@@ -62,7 +62,7 @@ class Ball {
       float distZ = abs(positionCylindres.get(i).z - (location.z + velocity.z));
       float dist = sqrt(distX * distX + distZ * distZ);
       if (dist <= radius + cylinderBaseSize) {
-        ???
+        
       }
     }
   }

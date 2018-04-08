@@ -7,7 +7,7 @@ void draw_game() {
   rotateX(rotX);
   rotateZ(rotZ);
   box(box_size, box_thickness, box_size);
-
+  
   pushMatrix();
   ball.update();
   ball.checkEdges();
