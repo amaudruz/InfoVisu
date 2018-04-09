@@ -79,20 +79,19 @@ class Ball {
          //println(sizeofN);
 
         float scalar = 2*((velocity.x * nX) + (velocity.z * nZ)); // le produit scalaire dans la formule 
-        //float vit = (velocity.x *  velocity.x) + ( velocity.z *  velocity.z);
-       // println(" vit : " + vit);
-       // on utilise la formule pour change la vitesse 
+        float vit = sqrt((velocity.x *  velocity.x) + ( velocity.z *  velocity.z));
+      
         velocity.x = velocity.x - 2*scalar*(nX);
         velocity.z = velocity.z - 2*scalar*(nZ);
-        
+        float thisvit = sqrt((velocity.x *  velocity.x) + ( velocity.z *  velocity.z));
+  
+         velocity.x = velocity.x *vit/thisvit;
+         velocity.z = velocity.z *vit/thisvit;
+       
         // on remet la balle au bord du cylindre
-        location.x = positionCylindres.get(i).x + cylinderBaseSize*nX + radius;  
-        location.z = positionCylindres.get(i).y + cylinderBaseSize*nZ + radius;
-        //vit = (velocity.x *  velocity.x) + ( velocity.z *  velocity.z);
-         //println("Apres : " + location.x + "; " +location.y + "; " + location.z);
-         //println(" vit 2 : " + vit);
-
-        //println("Apres  Vitesse : " + velocity.x + "; " +velocity.y + "; " + velocity.z);
+        location.x = positionCylindres.get(i).x + (cylinderBaseSize+ radius)*nX;  
+        location.z = positionCylindres.get(i).y + (cylinderBaseSize+ radius)*nZ;
+       
       }
     }
   }
